@@ -1,4 +1,5 @@
 <h1>Edit figure: </h1>
+
 <form action="/figures/<%=@figure.id%>" method="post">
   <h3>Name: </h3>
   <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
@@ -6,9 +7,23 @@
   <h3>Landmarks: </h3>
   <%Landmark.all.each do |landmark|%>
     <ul>
-      <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%landmark.name%>
+      <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%>
     </ul>
   <%end%>
 
-  
+  Create New Landmark: <input type="text" name="title[name]" id="new_landmark">
+
+  <h3>Titles</h3>
+  <%Title.all.each do |title|%>
+    <ul>
+      <input type="checkbox" name="figure[title_id][]" value="<%=title.id%>" id="title<%=title.id%>"><%=title.name%>
+    </ul>
+  <%end%>
+
+  Create New Title: <input type="text" name="title[name]" id="new_title">
+  <br>
+  <br>
+
+  <input type="submit" value="Edit Figure">
+
 </form>
