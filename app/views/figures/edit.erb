@@ -2,4 +2,13 @@
 <form action="/figures/<%=@figure.id%>" method="post">
   <h3>Name: </h3>
   <input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>">
+
+  <h3>Landmarks: </h3>
+  <%Landmark.all.each do |landmark|%>
+    <ul>
+      <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%landmark.name%>
+    </ul>
+  <%end%>
+
+  
 </form>
